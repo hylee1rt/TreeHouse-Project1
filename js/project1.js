@@ -1,8 +1,11 @@
-function getQuote() {
+function getRandomQuote() {
+    //define a quotes array
     var quotes = [
         { 
             quote: "Stay Hungry. Stay Foolish.", 
-            source: "Steve Jobs"
+            source: "Steve Jobs",
+            citation: "google",
+            year: "2005"
         },
         { 
             quote: "Yesterday is history. Tomorrow is a mystery. But today is a gift. That's why we call it the present.", 
@@ -92,7 +95,29 @@ function getQuote() {
 
         }
     ]
-    index = Math.floor(Math.random() * 10);
-    document.getElementById("quote").innerHTML = quotes[index].quote;
-    document.getElementById("source").innerHTML = `~ ${quotes[index].source}`;
+    // pick random index and store the values of that quote into variables
+    var index = Math.floor(Math.random() * 10);
+    var quote = quotes[index].quote;
+    var author = quotes[index].source;
+    var citation = quotes[index].citation;
+    var year = quotes[index].year;
+
+    // return specific variables of that quote
+    return [quote,author,citation,year];
+
   }
+
+function printQuote() {
+
+    // initialize thinsg array containing variables returned from getRandomQuote function
+    var things = getRandomQuote();
+    // insert each element into respective places in html elements 
+    document.getElementById("quote").innerHTML = things[0];
+    document.getElementById("source").innerHTML = `~ ${things[1]}`;
+    document.getElementById("citation").innerHTML = `citation: ${things[2]}`;
+    document.getElementById("year").innerHTML = `year: ${things[3]}`;
+
+
+
+
+}
